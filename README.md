@@ -91,4 +91,7 @@ WITH seat_series AS (
     AND 
         PRIOR ts.SEQ_ID = ts.SEQ_ID  -- Ensure the same sequence ID for the hierarchy
 )
+```
+# Conclusion
 
+This code is functional and allows for the proper expansion of the block of seats. Due to confidentiality reasons, I cannot share the full code, but feel free to reach out in case of any questions.
