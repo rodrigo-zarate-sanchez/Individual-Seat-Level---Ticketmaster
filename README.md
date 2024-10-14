@@ -79,7 +79,7 @@ WITH seat_series AS (
         TICKETI_STAGING ts   -- Source table with ticket data
     WHERE 
         ts.LAST_SEAT >= ts.SEAT_NUM  -- Filter for valid seat ranges (last seat is greater than or equal to the first)
-        AND ts.TICKET_STATUS IN ('A', 'R')  -- Consider only tickets with 'A' (Active) or 'R' (Reserved) status
+        AND ts.TICKET_STATUS IN ('A', 'R')  -- Consider only tickets Active (A) or Return (R). Exchange status (T) is not considered in this solution.
     CONNECT BY 
         -- Hierarchical query to generate seat numbers for each row based on the seat range
         LEVEL <= (ts.LAST_SEAT - ts.SEAT_NUM + 1)
