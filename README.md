@@ -4,10 +4,10 @@ Code for expanding the seat blocks from Ticketmaster to the individual seat leve
 Expanding Ticketmaster Seat Blocks to Individual Seat Level
 
 Objective
-This article aims to propose a coding solution for expanding Ticketmaster seat blocks to the individual seat level.
+This article proposes a coding solution for expanding Ticketmaster seat blocks to the individual seat level.
 
 Context
-Ticketmaster operates using seat blocks rather than individual seat assignments. For instance, if a customer buys seats 1 to 4, the system treats this as one transaction line item. It will indicate the first seat in the block (seat 1) and the number of seats (4), meaning the customer has purchased four seats within that block. In essence, the system doesn’t specify that the customer owns seats 1, 2, 3, and 4, but instead a block from seat 1 to seat 4.
+Ticketmaster operates using seat blocks rather than individual seat assignments. For instance, if a customer buys seats 1 to 4, the system treats this as one transaction line item. It will indicate the first seat in the block (seat 1) and the number of seats (4), meaning the customer has purchased four seats within that block. The system doesn’t specify that the customer owns seats 1, 2, 3, and 4, but instead a block from seat 1 to seat 4.
 
 This can present challenges when seat-level comparisons are required. Ticketmaster elaborates: "When an entry is included in the incremental export, fields such as event_name, section_name, row_name, first_seat, last_seat, and add_datetime must be used for comparison. A one-to-one comparison cannot be performed since our system uses seat blocks, which can be split and rejoined. The comparison must check whether the seat already exists in the table. If it does, the new data should replace the existing seat data."
 
@@ -17,11 +17,11 @@ To address this issue, below is a proposed solution that expands the block of se
 What is a CTE (Common Table Expression)?
 A CTE is a temporary result set that can be referenced within SQL statements like SELECT, INSERT, UPDATE, or DELETE. CTEs are particularly useful for simplifying complex queries, especially when recursive operations are needed or when the same subquery is reused multiple times within a larger query.
 
-A CTE is similar to a temporary table, but it only exists for the duration of the query execution. CTEs are helpful in improving query readability and maintainability.
+A CTE is similar to a temporary table, but it only exists for the duration of the query execution. CTEs help improve query readability and maintainability.
 
 Example Syntax for CTE:
-sql
-Copy code
+SQL
+
 WITH CTE_name AS (
     SELECT columns
     FROM table_name
@@ -29,6 +29,7 @@ WITH CTE_name AS (
 )
 SELECT *
 FROM CTE_name;
+
 Proposed Solution
 The following is a sample of the proposed code. It is a macro-level solution designed to give a conceptual understanding, and the code is not exhaustive. Feel free to reach out if you have any questions.
 
