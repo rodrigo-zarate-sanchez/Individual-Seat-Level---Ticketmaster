@@ -29,7 +29,8 @@ WITH CTE_name AS (
     WHERE conditions
 )
 SELECT *
-FROM CTE_name;```
+FROM CTE_name;
+```
 
 ### Proposed Code
 Below is part of the code. The objective is to present a macro solution, so the code is not exhaustive. If you have any questions, please feel free to reach out.
