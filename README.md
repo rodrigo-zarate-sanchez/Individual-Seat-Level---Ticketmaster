@@ -40,7 +40,7 @@ This query assumes that the data comes from the TICKETI_STAGING table (where inc
 It’s important to adjust the revenue values (e.g., block purchase price, paid amount, and owed amount) to the individual seat level, as these values are assigned to the block of seats. See the specific code for these fields below.
 
 ```sql
--- Create a table named SEATBYSEAT_test using a query that generates seat-level ticket data
+-- Create a table named SEATBYSEAT_F using a query that generates seat-level ticket data
 CREATE TABLE SEATBYSEAT_F AS
 -- Define a Common Table Expression (CTE) named 'seat_series' to build seat-specific data
 WITH seat_series AS (
