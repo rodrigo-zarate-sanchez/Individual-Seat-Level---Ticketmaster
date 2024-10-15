@@ -50,7 +50,7 @@ WITH seat_series AS (
         ts.ROW_NAME,              -- Row name within the section
         ts.ROW_ID,                -- Row identifier
         ts.ACCT_ID,               -- Account ID of the ticket holder
-        ts.TICKET_STATUS,         -- Ticket status (e.g., active, reserved)
+        ts.TICKET_STATUS,         -- Ticket status (active, return, or exchange)
         (ts.SEAT_NUM + LEVEL - 1) AS SEAT, -- Generate seat numbers dynamically based on hierarchical level
         ts.EVENT_NAME || '-' || ts.SECTION_NAME || '-' || ts.ROW_NAME || '-' || (ts.SEAT_NUM + LEVEL - 1) AS KEY,  -- Create a unique key for each seat using event, section, row, and seat number
         ts.SECTION_NAME || '-' || ts.ROW_NAME || '-' || (ts.SEAT_NUM + LEVEL - 1) AS KEY_SEAT, 
