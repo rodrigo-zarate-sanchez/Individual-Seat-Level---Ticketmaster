@@ -81,11 +81,9 @@ WITH seat_series AS (
         ts.LAST_SEAT >= ts.SEAT_NUM  -- Filter for valid seat ranges (last seat is greater than or equal to the first)
         AND ts.TICKET_STATUS IN ('A', 'R')  -- Consider only tickets Active (A) or Return (R). Exchange status (T) is not considered in this solution.
     CONNECT BY 
-        -- Hierarchical query to generate seat numbers for each row based on the seat range
-        LEVEL <= (ts.LAST_SEAT - ts.SEAT_NUM + 1)
+        LEVEL <= (ts.LAST_SEAT - ts.SEAT_NUM + 1) -- Hierarchical query to generate seat numbers for each row based on the seat range
     AND 
-        -- Ensures no invalid recursive loops by randomizing the join condition
-        PRIOR ts.TICKET_SEQ_ID = ts.TICKET_SEQ_ID 
+        PRIOR ts.TICKET_SEQ_ID = ts.TICKET_SEQ_ID -- Ensures no invalid recursive loops by randomizing the join condition 
     AND 
         PRIOR dbms_random.value IS NOT NULL  -- Prevent infinite loops with random values
     AND 
@@ -94,4 +92,4 @@ WITH seat_series AS (
 ```
 # Conclusion
 
-This code is functional and allows for the proper expansion of the block of seats. Due to confidentiality reasons, I cannot share the full code, but feel free to reach out in case of any questions.
+The purpose of this article is to propose a solution to the issue of expanding blocks of seats using Ticketmaster data. Due to confidentiality reasons, I cannot share the full code, but feel free to reach out in case of any questions.
